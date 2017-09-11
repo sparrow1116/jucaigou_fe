@@ -1,0 +1,16 @@
+.nonePage{
+  height: 15rem;
+  padding-top: 240px;
+    background-color: #fff;
+}
+.noneList{
+  width: 340px;
+  margin: 0 auto;
+  background:  url("../../../assets/todayApply/icon_noorder@3x.png") center top no-repeat;
+  background-size: contain;
+  padding-top: 300px;
+ text-align: center;
+ font-size: 28px;
+ color: #999999;
+
+}

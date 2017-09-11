@@ -1,0 +1,18 @@
+
+
+.create {
+  margin-bottom: 1.5em;
+}
+
+.operation a {
+  margin: 0 .5em;
+}
+.list{
+  width:100%;
+}
+.tab {
+  width: 100%;
+  position: fixed;
+    top: 0;
+    left: 0;
+}

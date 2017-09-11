@@ -1,0 +1,40 @@
+.title{
+    width: 100%;
+    height: 90px;
+    line-height:90px;
+    text-align: center;
+    font-size: 34px;
+    color: #333333;
+    background: #FFFFFF;
+    position: fixed;
+    top:0;
+    left: 0;
+    z-index: 999;
+      border-bottom: 1px solid #E1E1E1;
+     padding-top: 40px;
+}
+.title span:nth-child(2){
+    display: inline-block;
+    width: 50%;
+    text-overflow: ellipsis;
+    white-space: nowrap;
+    overflow: hidden;
+}
+.return{
+    position: absolute;
+    left: 30px;
+    height: 90px;
+    width: 100px;
+    background: url("../../assets/pointMall/icon_arrow_back@3x.png" ) no-repeat left center;
+    background-size: 40%;
+}
+.right{
+    position: absolute;
+    right: 30px;
+     height: 90px;
+    line-height:90px;
+    opacity: 0.8;
+    font-size: 28px;
+    color: #666666;
+
+}

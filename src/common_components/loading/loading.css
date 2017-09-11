@@ -1,0 +1,16 @@
+.nonePage{
+  height: 15rem;
+  padding-top: 300px;
+    background-color: #fff;
+}
+.noneList{
+  width: 280px;
+  margin: 0 auto;
+  background:  url("../../assets/loading.gif") center top no-repeat;
+  background-size: contain;
+  padding-top: 300px;
+ text-align: center;
+ font-size: 28px;
+ color: #999999;
+
+}

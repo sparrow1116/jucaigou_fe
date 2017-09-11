@@ -1,0 +1,51 @@
+.confrimBG{
+     width: 100%;
+    height: 100%;
+    position: fixed;
+    top: 0;
+    left: 0;
+    z-index: 10;
+    background: rgba(0,0,0,0.6)
+}
+.confrimResult{
+    width:72%;
+    height: 46%;
+    position: absolute;
+    top:50%;
+    left: 50%;
+    margin-top: -46%;
+    margin-left: -36%;
+    z-index: 20;
+    border-radius: 20px;
+    background: #fff;
+    text-align: center;
+
+}
+.confrimResult div:nth-child(1){
+    height: 40%;
+    margin-top:12%; 
+}
+.confrimResult div:nth-child(1) img{
+    width:70%;
+}
+.confrimResult div:nth-child(2) {
+    font-size: 34px;
+    color: #333333;
+    font-weight: 600;
+    line-height: 44px;
+    height: 14%;
+}
+.confrimResult div:nth-child(3) {
+    font-size: 26px;
+    color: #666666;
+    line-height: 40px;
+  height: 20%;
+    padding: 0 10%;
+}
+.confrimResult div:nth-child(4) {
+    border-top: 1px solid  #E1E1E1;
+    line-height: 86px;
+     height: 16%;
+     font-size:34px;
+    color: #0095EB;
+}

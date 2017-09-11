@@ -1,0 +1,24 @@
+{
+    "list":[{
+        "customName": "",
+        "productName": "iPhon",
+        "orderStatus": {
+            "code":1,
+            "desc":"已款"
+        },
+        "orderPosName" :"",
+        "orderS1Name":"",
+        "headImg":"",
+        "amount": 5000,
+        "loanType":{
+            "code":1,
+            "desc":"对款"
+        }
+    }] ,
+    "endRow":0,
+    "pageNum":0,
+    "pageSize":5,
+    "pages":6,
+    "startRow":0,
+    "total":100
+}
