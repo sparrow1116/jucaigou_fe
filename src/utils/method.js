@@ -5,7 +5,7 @@
 export const trim = function (str) {//去掉空格
     if (!str) return;
     str += '';
-    return str.replace(/(^\s*)|(\s*$)/g, '');
+    return str.replace(/\s/g,"");
 }
 
 //检验是否是手机号

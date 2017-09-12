@@ -55,20 +55,13 @@ export default function request(url, options) {
                 console.log(res.status);
                 return res.json(); })
             .then((data) => {
-                if(data.status == 0 ){
-                    return {data:data.data}
-                }else if(data.status == 2){
-                    window.bridge.logout();
-                }else if(data.status == 1){
-                   if(data.errCode == "E102"){
-                         return {data:"failed"}
-                    }else{
-                        window.bridge.displayToast(data.msg);
-                        return {data:null}
-                    }
-                }
+                return data;
             })
-            .catch((e) =>({e}) );
+            .catch((e) =>({
+                status:1,
+                msg:'系统错误',
+                data:null
+            }) );
 
             /*.then(checkStatus)
             .then(parseJSON)
@@ -93,20 +86,13 @@ export default function request(url, options) {
             console.log(res.status);
             return res.json(); })
         .then((data) =>{
-            if(data.status == 0 ){
-                return {data:data.data}
-            }else if(data.status == 2){
-                window.bridge.logout();
-            }else if(data.status == 1){
-                if(data.errCode == "E102"){
-                    return {data:"failed"}
-                }else{
-                    window.bridge.displayToast(data.msg);
-                    return {data:null}
-                }
-            }
+            return data;
         })
-        .catch((e) =>({e}) );
+        .catch((e) =>({
+            status:1,
+            msg:'系统错误',
+            data:null
+        }) );
 
     /*return fetchDva(meUrl, options)
         .then(checkStatus)

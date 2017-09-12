@@ -15,30 +15,33 @@ import logoPic from '../../../assets/login/login_logo.png'
 
 class LoginForm extends Component {
     constructor(props) {
-	super(props);
-    }
-    onPhoneChange(value){
-	this.props.dispatch({
-	    type: 'Login/phoneChange',
-	    payload: { value }
-	})
-    }
-    onMsgChange(value){
-	this.props.dispatch({
-	    type: 'Login/msgChange',
-	    payload: { value }
-	})
+        super(props);
     }
 
-    sendMessage(){
-	this.props.dispatch({
-	    type:'Login/sendMessage'
-	})
+    onPhoneChange(value) {
+        this.props.dispatch({
+            type: 'Login/phoneChange',
+            payload: {value}
+        })
     }
-    login(){
-	this.props.dispatch({
-	    type:'Login/login'
-	})
+
+    onMsgChange(value) {
+        this.props.dispatch({
+            type: 'Login/msgChange',
+            payload: {value}
+        })
+    }
+
+    sendMessage() {
+        this.props.dispatch({
+            type: 'Login/sendMessage'
+        })
+    }
+
+    login() {
+        this.props.dispatch({
+            type: 'Login/login'
+        })
     }
 
     render() {
@@ -47,36 +50,33 @@ class LoginForm extends Component {
 
 	return (<div style={{position: "relative",width:'85%',marginTop:'10%'}}>
 	    <InputItem
-		className={styles.input_item}
-		{...getFieldProps('phone')}
-		type="phone"
-		placeholder="11位手机号"
-		maxLength={13}
-		value={this.props.phone}
-		onChange={this.onPhoneChange.bind(this)}
-	    ></InputItem>
+		    className={styles.input_item}
+		    {...getFieldProps('phone')}
+		    type="phone"
+		    placeholder="11位手机号"
+		    maxLength={13}
+		    value={this.props.phone}
+		    onChange={this.onPhoneChange.bind(this)}>
+        </InputItem>
 	    <InputItem
-		className={styles.input_item}
-		{...getFieldProps('password')}
-		type="password"
-		maxLength={4}
-		value={this.props.msgCode}
-		onChange={this.onMsgChange.bind(this)}
-		placeholder="4位数字"
-	    ></InputItem>
+		    className={styles.input_item}
+		    {...getFieldProps('password')}
+		    type="password"
+		    maxLength={4}
+		    value={this.props.msgCode}
+		    onChange={this.onMsgChange.bind(this)}
+		    placeholder="4位数字">
+        </InputItem>
 	    <span onClick={this.sendMessage.bind(this)} className={styles.send_message_btn}>
-		{this.props.sendMessageBtnDisp}
+		    {this.props.sendMessageBtnDisp}
 	    </span>
 
 	    <Button
-		className={styles.login_btn}
-		onClick={this.login.bind(this)}
-	    >
-		登录
+		    className={styles.login_btn}
+		    onClick={this.login.bind(this)}>
+		    登录
 	    </Button>
-
 	</div>)
-
     }
 }
 
@@ -86,17 +86,20 @@ LoginForm = createForm()(LoginForm)
 
 class LoginComponent extends Component {
     constructor(props) {
-	super(props);
+        super(props);
+        this.toggeleError = false;
+    }
+    shouldComponentUpdate(nextProps, nextState){
+        if(this.props.toggeleError != nextProps.toggeleError){
+            Toast.info(nextProps.errorMessage);
+        }
+        return nextProps;
     }
 
-    componentWillUpdate(){
-        console.log('will update');
-    }
-
-    gotoRegisterPage(){
-	this.props.dispatch(routerRedux.push({
-	    pathname: '/registerPage'
-	}));
+    gotoRegisterPage() {
+        this.props.dispatch(routerRedux.push({
+            pathname: '/registerPage'
+        }));
     }
 
     render() {
@@ -115,11 +118,13 @@ class LoginComponent extends Component {
 }
 
 function mapStateToProps(state) {
-    const { phone,msgCode,sendMessageBtnDisp } = state.Login;
+    const { toggeleError,errorMessage,phone,msgCode,sendMessageBtnDisp } = state.Login;
     return {
-	phone,
-	msgCode,
-	sendMessageBtnDisp
+        toggeleError,
+        errorMessage,
+        phone,
+        msgCode,
+        sendMessageBtnDisp
     };
 }
 

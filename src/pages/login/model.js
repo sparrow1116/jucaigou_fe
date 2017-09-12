@@ -1,87 +1,118 @@
 /**
  * Created by zyj on 2017/9/5.
  */
-
-
 import * as method from '../../utils/method'
-
+import * as LoginService from './service';
 export default {
     namespace: 'Login',
     state: {
-	phone:'',
-	msgCode:'',
-	errorMessage:'',
-	sendMessageBtnDisp:'免费获取'
+        phone: '',
+        msgCode: '',
+        errorMessage: '',
+        toggeleError:false,
+        sendMessageBtnDisp: '免费获取'
     },
     reducers: {
-	changePhone(state,{payload:{value}}){
-	    state.phone = value;
-	    return {...state}
-	},
-	changeMsgCode(state,{payload:{value}}){
-	    state.msgCode = value;
-	    return {...state}
-	},
-	showError(state,{payload:{msg}}){
-	    state.msgCode = msg;
-	    return {...state};
-	}
+        changePhone(state, {payload:{value}}){
+            state.phone = value;
+            return {...state}
+        },
+        changeMsgCode(state, {payload:{value}}){
+            state.msgCode = value;
+            return {...state}
+        },
+        changeSendMessageBtnDisp(state,{payload:{value}}){
+            state.sendMessageBtnDisp = value;
+            return {...state}
+        },
+        showError(state, {payload:{msg}}){
+            state.errorMessage = msg;
+            state.toggeleError = !state.toggeleError;
+            return {...state};
+        }
     },
     effects: {
-	*phoneChange({payload:{value}},{call,select,put}){
-	    yield put({
-		type: 'changePhone',
-		payload:{
-		    value
-		}
-	    });
-    	},
-	*msgChange({payload:{value}},{call,select,put}){
-	    yield put({
-		type: 'changeMsgCode',
-		payload:{
-		    value
-		}
-	    });
-	},
-	*sendMessage({payload:{value}},{call,select,put}){
+        *phoneChange({payload:{value}}, {call,select,put}){
+            yield put({
+                type: 'changePhone',
+                payload: {
+                    value
+                }
+            });
+        },
+        *msgChange({payload:{value}}, {call,select,put}){
+            yield put({
+                type: 'changeMsgCode',
+                payload: {
+                    value
+                }
+            });
+        },
+        *sendMessage({}, {call,select,put}){
 
-	    let sendMessageBtnDisp = null;
-	    let phone = null;
-	    yield select(state =>{
-		sendMessageBtnDisp = state.Login.sendMessageBtnDisp;
-		phone = state.Login.phone;
-	    });
-	    // if(sendMessageBtnDisp == '免费获取')
-	    yield  put({
-	        type:'showError',
-		payload:{
-	            msg:'手机没有注册'
-		}
-	    });
-	    /*yield put({
-		type: 'changeMsgCode',
-		payload:{
-		    value
-		}
-	    });*/
-	},
-	*login({payload:{value}},{call,select,put}){
-	    yield put({
-		type: 'changeMsgCode',
-		payload:{
-		    value
-		}
-	    });
-	},
+            let phone = null,sendMessageBtn = null;
+            yield select(state => {
+                phone = state.Login.phone;
+                sendMessageBtn = state.Login.sendMessageBtnDisp;
+            });
+            if(sendMessageBtn.indexOf('s') > 0){
+                return;
+            }
+            if(!method.isMobile(method.trim(phone))){
+                yield  put({
+                    type: 'showError',
+                    payload: {msg: '手机格式有误'}
+                });
+                return;
+            }
+
+            const { data } = yield call(LoginService.sendMessageCode, {phone});
+            if(data.status == 0){
+                yield  put({
+                    type: 'changeSendMessageBtnDisp',
+                    payload: {value:'60s重发'}
+                });
+
+                let selfInterval = window.setInterval(()=>{
+                    let btnDisp = yield select(state => { return state.Login.sendMessageBtnDisp});
+                    let time = btnDisp.split('s')[0];
+                    if(time == 0){
+                        window.clearInterval(selfInterval);
+                        btnDisp = '重新发送'
+                    }else{
+                        btnDisp = Number(time) - 1 + 's重发'
+                    }
+                    yield  put({
+                        type: 'changeSendMessageBtnDisp',
+                        payload: {value:btnDisp}
+                    });
+                },1000);
+
+            }else{
+                yield  put({
+                    type: 'showError',
+                    payload: {msg: data.msg}
+                });
+                return;
+            }
+
+        },
+        *login({payload:{value}}, {call,select,put}){
+            yield put({
+                type: 'changeMsgCode',
+                payload: {
+                    value
+                }
+            });
+        },
 
 
     },
     subscriptions: {
-	setup({ dispatch, history }) {
-	    return history.listen(({ pathname, query }) => {
+        setup({ dispatch, history }) {
+            return history.listen(({ pathname, query }) => {
 
-	    });
-	},
+            });
+        },
     },
 };
