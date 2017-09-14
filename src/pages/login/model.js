@@ -3,6 +3,9 @@
  */
 import * as method from '../../utils/method'
 import * as LoginService from './service';
+
+let selfInterval = null;
+
 export default {
     namespace: 'Login',
     state: {
@@ -48,6 +51,28 @@ export default {
                 }
             });
         },
+        *countDown({},{call,select,put}){
+
+            let btnDisp = yield select(state => {
+                return state.Login.sendMessageBtnDisp
+            });
+            if(btnDisp.indexOf('s')<0){
+                return;
+            }
+            let time = btnDisp.split('s')[0];
+            if (time == 0) {
+                window.clearInterval(selfInterval);
+                btnDisp = '重新发送'
+            } else {
+                btnDisp = Number(time) - 1 + 's重发'
+            }
+            yield  put({
+                type: 'changeSendMessageBtnDisp',
+                payload: {value: btnDisp}
+            });
+
+
+        },
         *sendMessage({}, {call,select,put}){
 
             let phone = null,sendMessageBtn = null;
@@ -66,34 +91,22 @@ export default {
                 return;
             }
 
-            const { data } = yield call(LoginService.sendMessageCode, {phone});
+            const data = yield call(LoginService.sendMessageCode, {phone});
             if(data.status == 0){
                 yield  put({
                     type: 'changeSendMessageBtnDisp',
                     payload: {value:'60s重发'}
                 });
 
-                let selfInterval = window.setInterval(()=>{
-                    let btnDisp = yield select(state => { return state.Login.sendMessageBtnDisp});
-                    let time = btnDisp.split('s')[0];
-                    if(time == 0){
-                        window.clearInterval(selfInterval);
-                        btnDisp = '重新发送'
-                    }else{
-                        btnDisp = Number(time) - 1 + 's重发'
-                    }
-                    yield  put({
-                        type: 'changeSendMessageBtnDisp',
-                        payload: {value:btnDisp}
-                    });
+                var generator = countDown();
+                selfInterval = setInterval(()=>{
+                    generator.next();
                 },1000);
-
             }else{
                 yield  put({
                     type: 'showError',
                     payload: {msg: data.msg}
                 });
-                return;
             }
 
         },
