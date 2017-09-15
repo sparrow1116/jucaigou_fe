@@ -66,6 +66,7 @@ export default {
             } else {
                 btnDisp = Number(time) - 1 + 's重发'
             }
+            yield setTimeout(()=>{},1000);
             yield  put({
                 type: 'changeSendMessageBtnDisp',
                 payload: {value: btnDisp}
@@ -97,11 +98,17 @@ export default {
                     type: 'changeSendMessageBtnDisp',
                     payload: {value:'60s重发'}
                 });
-
-                var generator = countDown();
-                selfInterval = setInterval(()=>{
-                    generator.next();
-                },1000);
+                //let generator = countDown()
+                //selfInterval = setInterval(()=>{
+                    //function *test(){
+                    //    console.log('>>>>>>>> come in test');
+                    //    yield put({
+                    //        type: 'countDown'
+                    //    });
+                    //}
+                    //let generator=test();
+                //    generator.next();
+                //},1000);
             }else{
                 yield  put({
                     type: 'showError',
