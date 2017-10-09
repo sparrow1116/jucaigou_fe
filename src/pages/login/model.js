@@ -4,7 +4,11 @@
 import * as method from '../../utils/method'
 import * as LoginService from './service';
 
-let selfInterval = null;
+function delay(timeout){
+    return new Promise(resolve => {
+        setTimeout(function(){resolve()}, timeout);
+    });
+}
 
 export default {
     namespace: 'Login',
@@ -53,6 +57,8 @@ export default {
         },
         *countDown({},{call,select,put}){
 
+            yield call(delay, 1000);
+
             let btnDisp = yield select(state => {
                 return state.Login.sendMessageBtnDisp
             });
@@ -60,13 +66,14 @@ export default {
                 return;
             }
             let time = btnDisp.split('s')[0];
-            if (time == 0) {
-                window.clearInterval(selfInterval);
+            if (time <= 0) {
                 btnDisp = '重新发送'
             } else {
-                btnDisp = Number(time) - 1 + 's重发'
+                btnDisp = Number(time) - 1 + 's重发';
+                yield put({
+                    type:'countDown'
+                })
             }
-            yield setTimeout(()=>{},1000);
             yield  put({
                 type: 'changeSendMessageBtnDisp',
                 payload: {value: btnDisp}
@@ -98,17 +105,10 @@ export default {
                     type: 'changeSendMessageBtnDisp',
                     payload: {value:'60s重发'}
                 });
-                //let generator = countDown()
-                //selfInterval = setInterval(()=>{
-                    //function *test(){
-                    //    console.log('>>>>>>>> come in test');
-                    //    yield put({
-                    //        type: 'countDown'
-                    //    });
-                    //}
-                    //let generator=test();
-                //    generator.next();
-                //},1000);
+                yield put({
+                    type:'countDown'
+                })
+
             }else{
                 yield  put({
                     type: 'showError',
@@ -118,12 +118,13 @@ export default {
 
         },
         *login({payload:{value}}, {call,select,put}){
-            yield put({
-                type: 'changeMsgCode',
-                payload: {
-                    value
-                }
+            let phone = null,msgCode = null;
+            yield select(state => {
+                phone = state.Login.phone;
+                msgCode = state.Login.msgCode;
             });
+            const data = yield call(LoginService.login, {phone});
+
         },
 
 

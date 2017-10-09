@@ -61,7 +61,7 @@ class LoginForm extends Component {
 	    <InputItem
 		    className={styles.input_item}
 		    {...getFieldProps('password')}
-		    type="password"
+		    type="number"
 		    maxLength={4}
 		    value={this.props.msgCode}
 		    onChange={this.onMsgChange.bind(this)}

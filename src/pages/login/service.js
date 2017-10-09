@@ -20,3 +20,17 @@ export function sendMessageCode({phone}) {
     //});
 
 }
+
+export function login({phone,msgCode}){
+
+    return request(Urls.login,  {
+        method: 'POST',
+        mode: "cors",
+        headers: {
+            'Content-Type': 'application/json',
+            'Accept': 'application/json'
+        },
+        body: JSON.stringify({phone,msgCode})
+
+    });
+}
