@@ -98,23 +98,22 @@ class LoginComponent extends Component {
 
     gotoRegisterPage() {
         this.props.dispatch(routerRedux.push({
-            pathname: '/registerPage'
+            pathname: '/register'
         }));
     }
 
     render() {
-	return(<div>
-	    <Flex justify="center" direction="column">
-		<img className={styles.logo_pic} src={logoPic} />
-		{/*<div className={styles.logo_title}>买单侠商户通</div>*/}
-		<LoginForm
-		    {...this.props}
-		    ></LoginForm>
-		<div onClick={this.gotoRegisterPage.bind(this)} className={styles.register_btn}>立即注册</div>
-	    </Flex>
-	</div>)
-    }
-
+        return(<div>
+            <Flex justify="center" direction="column">
+                <img className={styles.logo_pic} src={logoPic} />
+                {/*<div className={styles.logo_title}>买单侠商户通</div>*/}
+                <LoginForm
+                    {...this.props}
+                    ></LoginForm>
+                <div onClick={this.gotoRegisterPage.bind(this)} className={styles.register_btn}>立即注册</div>
+            </Flex>
+        </div>)
+        }
 }
 
 function mapStateToProps(state) {

@@ -1,0 +1,44 @@
+.send_message_btn{
+    position: absolute;
+    float: right;
+    right: 30px;
+    margin-top: -90px;
+    font-size: 25px;
+    color: #fff;
+    opacity: 0.5;
+}
+.input_item{
+    background: rgba(255,255,255,0.1);
+    margin-bottom: 30px;
+    border-radius: 50px;
+}
+.input_item input{
+    color:#fff !important;
+}
+.input_item:after{
+    border:0 !important;
+}
+
+.login_btn{
+    border-radius: 50px;
+    background:#0095EB;
+    color:#fff;
+    opacity: 0.5;
+}
+.login_btn.active{
+    opacity: 1;
+}
+.register_btn{
+    margin-top:30px;
+    text-align: center;
+    color:#fff;
+    font-size:25px;
+}
+
+.logo_pic{
+    margin-top:15%;
+}
+
+.logo_title{
+
+}
