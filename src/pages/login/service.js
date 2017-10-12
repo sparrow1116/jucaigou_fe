@@ -7,7 +7,7 @@ import * as Urls from '../../utils/urls'
 
 //发送登录短信验证码
 export function sendMessageCode({phone}) {
-    //return  window.bridge.getContext().then(function (data) {
+
     return request(Urls.sendMessage, {
         method: 'GET',
         mode: "cors",
@@ -17,8 +17,19 @@ export function sendMessageCode({phone}) {
         },
         body: {phone}
     });
-    //});
 
+}
+
+export function hasRegister({phone}){
+    return request(Urls.hasRegister, {
+        method: 'GET',
+        mode: "cors",
+        headers: {
+            'Content-Type': 'application/json',
+            'Accept': 'application/json'
+        },
+        body: {phone}
+    });
 }
 
 export function login({phone,msgCode}){

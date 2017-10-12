@@ -2,7 +2,7 @@ import React, { PropTypes } from 'react';
 import { Router, Route, IndexRoute, Link } from 'dva/router';
 
 // import IndexPage from './routes/IndexPage';
-
+//https://github.com/tytsp/react-antd-react-router-dva/blob/master/src/router.js
 const cached = {};
 function registerModel(app, model) {
     if (!cached[model.namespace]) {
@@ -32,6 +32,27 @@ function RouterConfig({ history,app}) {
                     cb(null, require('./routes/register'));
                 });
             }
+        },{
+            path: '/homepage',
+            name: 'Home',
+            getComponent(nextState, cb) {
+                require.ensure([], (require) => {
+                    //registerModel(app, require('./pages/register/model'));
+                    cb(null, require('./routes/home'));
+                });
+            },
+            childRoutes:[
+                {
+                    path: '/lobby',
+                    name: 'Lobby',
+                    getComponent(nextState, cb) {
+                        require.ensure([], (require) => {
+                            //registerModel(app, require('./pages/register/model'));
+                            cb(null, require('./routes/home'));
+                        });
+                    },
+                }
+            ]
         }
     ];
 

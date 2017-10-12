@@ -3,11 +3,25 @@
  */
 import * as method from '../../utils/method'
 import * as LoginService from './service';
+import { routerRedux } from 'dva/router';
 
 function delay(timeout){
     return new Promise(resolve => {
         setTimeout(function(){resolve()}, timeout);
     });
+}
+
+function isValidate(phone,msgCode){
+    if(!method.isMobile(method.trim(phone))){
+        return '手机号码格式不正确';
+    }
+    if(method.trim(msgCode).length !== 4){
+        return '验证码长度不对'
+    }
+    if(!method.isAllDigital(method.trim(msgCode))){
+        return '验证码格式不正确'
+    }
+    return false;
 }
 
 export default {
@@ -78,8 +92,6 @@ export default {
                 type: 'changeSendMessageBtnDisp',
                 payload: {value: btnDisp}
             });
-
-
         },
         *sendMessage({}, {call,select,put}){
 
@@ -98,8 +110,24 @@ export default {
                 });
                 return;
             }
+            let result = yield call(LoginService.hasRegister, {phone});
+            if(result.status == 0){
+                if(result.data != true){
+                    yield  put({
+                        type: 'showError',
+                        payload: {msg: result.msg}
+                    });
+                    return;
+                }
+            }else{
+                yield  put({
+                    type: 'showError',
+                    payload: {msg: result.msg}
+                });
+                return;
+            }
 
-            const data = yield call(LoginService.sendMessageCode, {phone});
+            let data = yield call(LoginService.sendMessageCode, {phone});
             if(data.status == 0){
                 yield  put({
                     type: 'changeSendMessageBtnDisp',
@@ -114,26 +142,43 @@ export default {
                     type: 'showError',
                     payload: {msg: data.msg}
                 });
+                return;
             }
 
         },
-        *login({payload:{value}}, {call,select,put}){
+        *login({}, {call,select,put}){
             let phone = null,msgCode = null;
             yield select(state => {
                 phone = state.Login.phone;
                 msgCode = state.Login.msgCode;
             });
-            const data = yield call(LoginService.login, {phone});
-
+            var errorMessage = isValidate(phone,msgCode);
+            if(errorMessage){
+                yield  put({
+                    type: 'showError',
+                    payload: {msg: errorMessage}
+                });
+                return;
+            }
+            const result = yield call(LoginService.login, {phone,msgCode});
+            if(result.status == 0){
+                //window.location.href = '/#/homepage'
+                yield put(routerRedux.push('/homepage/lobby'));
+            }else{
+                yield  put({
+                    type: 'showError',
+                    payload: {msg: result.msg}
+                });
+                return;
+            }
         },
-
-
     },
     subscriptions: {
         setup({ dispatch, history }) {
             return history.listen(({ pathname, query }) => {
+                console.log('>>>>>>>>>>>>');
                 if (pathname === '/register') {
-                    window.history.pushState('/#/register')
+                    //window.history.pushState('/#/register')
                 }
             });
         },

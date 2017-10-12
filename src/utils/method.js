@@ -51,7 +51,11 @@ export const formatNum = function (strNum) {
 
     return interNum;
 }
-
+//是否是纯数字
+export const isAllDigital = function (str) {
+    if (/^\d+$/.test(str)) return true; //纯数字
+    return false;
+}
 export const getParamFromUrl = function () {
     var url = window.location.href;
     var paramObj = {}

@@ -36,9 +36,10 @@ class RegisterForm extends Component {
         })
     }
 
-    onInviteCodeChange(){
+    onInviteCodeChange(value){
         this.props.dispatch({
-            type: 'Register/inviteCodeChange'
+            type: 'Register/inviteCodeChange',
+            payload: {value}
         })
     }
     register(){
@@ -97,6 +98,17 @@ class RegisterComponent extends Component {
         this.toggeleError = false;
     }
 
+    gotoLoginPage(){
+        window.history.go(-1);
+    }
+
+    shouldComponentUpdate(nextProps, nextState){
+        if(this.props.toggeleError != nextProps.toggeleError){
+            Toast.info(nextProps.errorMessage);
+        }
+        return nextProps;
+    }
+
     render() {
         return(<div>
             <Flex justify="center" direction="column">
@@ -104,6 +116,7 @@ class RegisterComponent extends Component {
                 <RegisterForm
                     {...this.props}
                 ></RegisterForm>
+                <div onClick={this.gotoLoginPage.bind(this)} className={styles.register_btn}>已有账号,立即登录</div>
             </Flex>
         </div>)
     }
@@ -111,11 +124,13 @@ class RegisterComponent extends Component {
 }
 
 function mapStateToProps(state) {
-    const { phone, msgCode, inviteCode, sendMessageBtnDisp} = state.Register;
+    const { phone, msgCode, inviteCode, toggeleError,errorMessage,sendMessageBtnDisp} = state.Register;
     return {
         phone,
         msgCode,
         inviteCode,
+        toggeleError,
+        errorMessage,
         sendMessageBtnDisp
     };
 }
