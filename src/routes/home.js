@@ -1,16 +1,16 @@
 /**
- * Created by zhangyj on 2017/10/12.
+ * Created by zhangyj on 2017/10/10.
  */
-
 import React from 'react';
 import { connect } from 'dva';
+// import styles from './Tab.css';
+import LobbyComponent from '../pages/home/components/home';
+
 
 function Home({ location }) {
     return (
         <div>
-            <div>
-                FUCK
-            </div>
+            <LobbyComponent />
         </div>
     );
 }

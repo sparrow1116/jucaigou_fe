@@ -3,9 +3,9 @@
     height: 90px;
     line-height:90px;
     text-align: center;
-    font-size: 34px;
-    color: #333333;
-    background: #FFFFFF;
+    font-size: 45px;
+    color: #fff;
+    background: red;
     position: fixed;
     top:0;
     left: 0;
@@ -20,14 +20,7 @@
     white-space: nowrap;
     overflow: hidden;
 }
-.return{
-    position: absolute;
-    left: 30px;
-    height: 90px;
-    width: 100px;
-    background: url("../../assets/pointMall/icon_arrow_back@3x.png" ) no-repeat left center;
-    background-size: 40%;
-}
+
 .right{
     position: absolute;
     right: 30px;

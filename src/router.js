@@ -33,26 +33,14 @@ function RouterConfig({ history,app}) {
                 });
             }
         },{
-            path: '/homepage',
+            path: '/home',
             name: 'Home',
             getComponent(nextState, cb) {
                 require.ensure([], (require) => {
-                    //registerModel(app, require('./pages/register/model'));
+                    registerModel(app, require('./pages/home/model'));
                     cb(null, require('./routes/home'));
                 });
-            },
-            childRoutes:[
-                {
-                    path: '/lobby',
-                    name: 'Lobby',
-                    getComponent(nextState, cb) {
-                        require.ensure([], (require) => {
-                            //registerModel(app, require('./pages/register/model'));
-                            cb(null, require('./routes/home'));
-                        });
-                    },
-                }
-            ]
+            }
         }
     ];
 
