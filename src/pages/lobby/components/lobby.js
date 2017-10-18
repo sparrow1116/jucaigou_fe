@@ -5,28 +5,24 @@ import { Toast, Flex, WhiteSpace,List, InputItem, Button } from 'antd-mobile';
 import React, { Component } from 'react'
 
 import Header from '../../../common_components/head/head'
-import SelfTabBar from './../../tabbar'
+//import SelfTabBar from './tabbar'
 import { connect } from 'dva';
 
-
-
-class HomeComponent extends Component {
+class LobbyComponent extends Component {
     constructor(props) {
         super(props);
     }
     render(){
-        return (
-            <div>
-                {this.props.children}
-            <SelfTabBar />
+        return (<div>
+            Fuck
         </div>)
     }
 }
 
 function mapStateToProps(state) {
-    const {errorMessage} = state.home;
+    const {errorMessage} = state.lobby;
     return {
         errorMessage
     };
 }
-export default connect(mapStateToProps)(HomeComponent);
+export default connect(mapStateToProps)(LobbyComponent);

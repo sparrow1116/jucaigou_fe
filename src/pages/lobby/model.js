@@ -1,11 +1,11 @@
 /**
- * Created by zhangyj on 2017/10/12.
+ * Created by zhangyj on 2017/10/18.
  */
 import * as method from '../../utils/method'
 import { routerRedux } from 'dva/router';
 
 export default {
-    namespace: 'home',
+    namespace: 'lobby',
     state: {
         errorMessage:''
     },

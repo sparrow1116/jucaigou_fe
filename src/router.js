@@ -1,6 +1,9 @@
 import React, { PropTypes } from 'react';
 import { Router, Route, IndexRoute, Link } from 'dva/router';
 
+import TT001 from './pages/tt001'
+import SelfTabBar from './pages/tabbar'
+
 // import IndexPage from './routes/IndexPage';
 //https://github.com/tytsp/react-antd-react-router-dva/blob/master/src/router.js
 const cached = {};
@@ -15,14 +18,14 @@ function registerModel(app, model) {
 function RouterConfig({ history,app}) {
     const routes = [
         {
-             path: '/',
-             name: 'Login',
-             getComponent(nextState, cb) {
-                 require.ensure([], (require) => {
-                     registerModel(app, require('./pages/login/model'));
-                     cb(null, require('./routes/login'));
-                 });
-             }
+            path: '/',
+            name: 'Login',
+            getComponent(nextState, cb) {
+                require.ensure([], (require) => {
+                    registerModel(app, require('./pages/login/model'));
+                    cb(null, require('./routes/login'));
+                });
+            }
         },{
             path: '/register',
             name: 'Register',
@@ -33,14 +36,25 @@ function RouterConfig({ history,app}) {
                 });
             }
         },{
-            path: '/home',
+            path: '/home/',
             name: 'Home',
             getComponent(nextState, cb) {
                 require.ensure([], (require) => {
                     registerModel(app, require('./pages/home/model'));
-                    cb(null, require('./routes/home'));
-                });
-            }
+                    cb(null, require('./pages/home/components/home'));
+                })
+            },
+            childRoutes: [
+                {
+                    path: 'lobby',
+                    getComponent (nextState, cb) {
+                        require.ensure([], require => {
+                            registerModel(app, require('./pages/lobby/model'));
+                            cb(null, require('./routes/lobby'));
+                        })
+                    },
+                }
+            ]
         }
     ];
 

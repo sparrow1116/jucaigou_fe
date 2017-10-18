@@ -1,7 +1,11 @@
 import './index.html';
 import './index.css';
+
 import dva from 'dva';
 import { browserHistory } from 'dva/router';
+
+
+
 
 // import './sdk/bridge.js';
 // import './sdk/native.js';
@@ -9,9 +13,9 @@ import { browserHistory } from 'dva/router';
 
 
 // 1. Initialize
-const app = dva({
+const app = dva(/*{
  history: browserHistory
- });
+ }*/);
 
 // 2. Plugins
 //app.use({});

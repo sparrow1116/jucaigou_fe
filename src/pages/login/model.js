@@ -163,7 +163,7 @@ export default {
             const result = yield call(LoginService.login, {phone,msgCode});
             if(result.status == 0){
                 //window.location.href = '/#/homepage'
-                yield put(routerRedux.push('/home'));
+                yield put(routerRedux.push('/home/lobby'));
             }else{
                 yield  put({
                     type: 'showError',
