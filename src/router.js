@@ -42,7 +42,7 @@ function RouterConfig({ history,app}) {
                 require.ensure([], (require) => {
                     registerModel(app, require('./pages/home/model'));
                     cb(null, require('./pages/home/components/home'));
-                })
+                });
             },
             childRoutes: [
                 {

@@ -7,8 +7,8 @@ const CopyWebpackPlugin = require('copy-webpack-plugin');
 module.exports = function(webpackConfig, env) {
 
     webpackConfig.plugins.push(new CopyWebpackPlugin([{
-        from:  './src/assets',
-        to:'./src/assets'
+        from:  './src/assets/stable',
+        to:'./src/assets/stable'
     }], {
         ignore: [],
         copyUnmodified: true
@@ -68,9 +68,9 @@ module.exports = function(webpackConfig, env) {
     // https://github.com/kisenka/svg-sprite-loader/issues/4
     webpackConfig.module.loaders.forEach(loader => {
         if (loader.test && typeof loader.test.test === 'function' && loader.test.test('.svg')) {
-        loader.exclude = svgDirs;
-    }
-});
+            loader.exclude = svgDirs;
+        }
+    });
     // 4. 配置 webpack loader
     webpackConfig.module.loaders.unshift({
         test: /\.(svg)$/i,

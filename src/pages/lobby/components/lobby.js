@@ -14,7 +14,15 @@ class LobbyComponent extends Component {
     }
     render(){
         return (<div>
-            Fuck
+            <Header content="今日申请"></Header>
+            <div>
+                <div>
+                    /*<span>聚买列表</span>
+                    <button>红黑走势图</button>*/
+                </div>
+
+
+            </div>
         </div>)
     }
 }
