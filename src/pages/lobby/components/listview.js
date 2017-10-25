@@ -9,23 +9,6 @@ import * as method from '../../../utils/method'
 import productPic from '../../../assets/2letter.png'
 
 
-const NUM_SECTIONS = 5;
-let pageIndex = 0;
-let SelfData = [];
-function genData(pIndex = 0) {
-    for (let i = 0; i < NUM_SECTIONS; i++) {
-        let product ={
-            id:pIndex*NUM_SECTIONS + i,
-            status:0,//0:集结中。1:集结完毕。 2:等待开奖
-            statusDisc:'集结完毕',
-            productName:'试试看看',
-            productId:'171023',
-            endTime:1508849398985
-        };
-        SelfData.push(product);
-    }
-}
-
 export default class Demo extends React.Component {
     constructor(props) {
         super(props);
@@ -35,7 +18,7 @@ export default class Demo extends React.Component {
         });
         this.state = {
             dataSource,
-            isLoading: true,
+            // isLoading: true,
             height: document.documentElement.clientHeight * 3 / 4
         };
     }
@@ -53,16 +36,10 @@ export default class Demo extends React.Component {
         const hei = document.documentElement.clientHeight - ReactDOM.findDOMNode(this.lv).parentNode.offsetTop;
         // simulate initial Ajax
         this.fetchData();
-        /*console.log('>>>>>>>>this.props');
-        console.log(this.props);
-        setTimeout(() => {
-            genData(pageIndex++);
-            this.setState({
-                dataSource: this.state.dataSource.cloneWithRows(SelfData),
-                isLoading: false,
-                height: hei,
-            });
-        }, 600);*/
+        this.setState({
+            height:hei
+        })
+
     }
 
     // If you use redux, the data maybe at props, you need use `componentWillReceiveProps`
@@ -77,18 +54,12 @@ export default class Demo extends React.Component {
     onEndReached = (event) => {
         // load new data
         // hasMore: from backend data, indicates whether it is the last page, here is false
-        if (this.state.isLoading && !this.state.hasMore) {
+
+        if(this.props.loading && !this.props.hasMore){
             return;
         }
-        console.log('reach end', event);
-        this.setState({ isLoading: true });
-        setTimeout(() => {
-            genData(++pageIndex);
-            this.setState({
-                dataSource: this.state.dataSource.cloneWithRows(SelfData),
-                isLoading: false,
-            });
-        }, 1000);
+	this.fetchData();
+
     }
 
     render() {
@@ -149,7 +120,7 @@ export default class Demo extends React.Component {
                 dataSource={this.state.dataSource}
                 renderFooter={() => (
                     <div style={{ padding: 30, textAlign: 'center' }}>
-                        {this.state.isLoading ? 'Loading...' : 'Loaded'}
+                        {this.props.loading ? 'Loading...' : 'Loaded'}
                     </div>)
                 }
                 renderRow={row}

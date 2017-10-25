@@ -9,26 +9,29 @@ export default {
     namespace: 'lobby',
     state: {
         loading:false,
+        hasMore:true,
         pageInfo:{
             pageSize:8,
             pageIndex:1,
             totalCount:9999999
         },
         productArr:[
-            /*{
-                id:0,
-                status:0,//0:集结中。1:集结完毕。 2:等待开奖
-                statusDisc:'集结中',
-                productName:'试试看看',
-                productId:'171023',
-                endTime:1508849398985
-            }*/
+
         ]
     },
     reducers: {
+	startLoad(state, {}){
+	    state.loading = true;
+	    return{...state}
+        },
+
         changeData(state, {payload:{data}  }) {
             state.pageInfo = data.pageInfo;
             state.productArr = state.productArr.concat(data.productArr);
+            state.loading = false;
+            if(state.pageInfo.pageIndex * state.pageInfo.pageSize >= state.pageInfo.totalCount){
+                state.hasMore = false
+            }
             return {...state};
         },
     },
@@ -36,6 +39,9 @@ export default {
         *getProductList(action,{call,select,put}){
             let pageInfo = yield select(state =>{return state.lobby.pageInfo});
             if(pageInfo.pageIndex * pageInfo.pageSize < pageInfo.totalCount){
+                yield put({
+                    type:'startLoad'
+                })
                 const { data } = yield call(ProductService.getProductList, {index: ++pageInfo.pageIndex,pageSize: pageInfo.pageSize});
                 yield put({
                     type: 'changeData',
