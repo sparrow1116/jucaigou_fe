@@ -1,0 +1,22 @@
+.content{
+    padding-top:130px;
+}
+.headLine{
+    background:#fefefe;
+    height:100px;
+}
+.headLine span{
+    font-size:30px;
+    color:#969696;
+    padding:5px 50px;
+    margin-top:25px;
+    display: inline-block;
+}
+.headLine button{
+    background: red;
+    color:#fff;
+    padding:10px 20px;
+    border-radius: 10px;
+    float: right;
+    margin:15px 20px;
+}

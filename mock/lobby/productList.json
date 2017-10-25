@@ -1,0 +1,70 @@
+{
+  "status": 0,
+  "msg": null,
+  "data": {
+    "pageInfo": {
+      "pageSize": 8,
+      "pageIndex": 1,
+      "totalCount": 10
+    },
+    "productArr": [
+      {
+        "id": 0,
+        "status": 0,
+        "statusDisc": "集结中",
+        "productName": "试试看看",
+        "productId": "171023",
+        "endTime": 1508849398985
+      },{
+        "id": 1,
+        "status": 1,
+        "statusDisc": "集结完毕",
+        "productName": "试试看看",
+        "productId": "171023",
+        "endTime": 1508849398985
+      },{
+        "id": 2,
+        "status": 2,
+        "statusDisc": "等待开奖",
+        "productName": "试试看看",
+        "productId": "171023",
+        "endTime": 1508849398985
+      },{
+        "id": 3,
+        "status": 0,
+        "statusDisc": "集结中",
+        "productName": "试试看看",
+        "productId": "171023",
+        "endTime": 1508849398985
+      },{
+        "id": 4,
+        "status": 0,
+        "statusDisc": "集结中",
+        "productName": "试试看看",
+        "productId": "171023",
+        "endTime": 1508849398985
+      },{
+        "id": 5,
+        "status": 0,
+        "statusDisc": "集结中",
+        "productName": "试试看看",
+        "productId": "171023",
+        "endTime": 1508849398985
+      },{
+        "id": 6,
+        "status": 0,
+        "statusDisc": "集结中",
+        "productName": "试试看看",
+        "productId": "171023",
+        "endTime": 1508849398985
+      },{
+        "id": 7,
+        "status": 0,
+        "statusDisc": "集结中",
+        "productName": "试试看看",
+        "productId": "171023",
+        "endTime": 1508849398985
+      }
+    ]
+  }
+}
