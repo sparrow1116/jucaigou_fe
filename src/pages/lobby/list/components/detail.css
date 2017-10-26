@@ -1,0 +1,87 @@
+.content{
+    padding-top:130px;
+}
+.headLine{
+    color:#969696;
+    font-size:30px;
+    height:80px;
+    line-height: 80px;
+    padding: 0 !important;
+    margin:0 50px;
+    border-bottom: 1px solid gainsboro;
+}
+.headLine .right{
+    font-size: 50px;
+    color:#333;
+}
+.line{
+    color:#969696;
+    font-size:30px;
+    padding:15px 50px;
+}
+.line .left{
+    width:50%;
+    float:left;
+    text-align: left;
+}
+.line .right{
+    margin-left: 50%;
+    width:50%;
+    text-align: right;
+}
+.singleBack{
+    color:#969696;
+    text-align: center;
+    height:80px;
+    line-height: 80px;
+    border: 1px solid gainsboro;
+    border-left:0;
+    border-right: 0;
+}
+.mutilBack{
+    background: #fff;
+    color:#969696;
+    text-align: center;
+    height:100px;
+    line-height: 100px;
+    border: 1px solid gainsboro;
+    border-left:0;
+    border-right: 0;
+}
+.mutilBack .left{
+    width:50%;
+    float: left;
+    border-right: 1px solid gainsboro;
+}
+.mutilBack .right{
+    width:50%;
+    margin-left: 50%;
+    color:#66FF66
+}
+
+.selfInput div:nth-child(1){
+    color:red;
+    font-weight: bold;
+    font-size:30px;
+    padding-left: 20px;
+}
+.selfCheckBox{
+
+}
+.selfCheckBox div:nth-child(1){
+    margin-left: 30px;
+    margin-right: 0 !important;
+}
+.selfCheckBox div:nth-child(2) div{
+    font-size: 30px !important;
+    color:#969696 !important;
+}
+
+.attention{
+    position: absolute;
+    float: right;
+    font-size:60px !important;
+    color:red;
+    top:0;
+    right:40px;
+}

@@ -4,12 +4,14 @@
 import { Toast, Flex, WhiteSpace,List, InputItem, Button } from 'antd-mobile';
 import React, { Component } from 'react'
 import { routerRedux } from 'dva/router';
+import { connect } from 'dva';
+
 
 import SelfList from './listview'
 import styles from './lobby.css'
-import Header from '../../../common_components/head/head'
+import Header from '../../../../common_components/head/head'
 //import SelfTabBar from './tabbar'
-import { connect } from 'dva';
+
 
 class LobbyComponent extends Component {
     constructor(props) {
@@ -38,10 +40,12 @@ class LobbyComponent extends Component {
 }
 
 function mapStateToProps(state) {
-    const {productArr,pageInfo} = state.lobby;
+    const {productArr,pageInfo,loading,hasMore} = state.lobby;
     return {
         productArr,
-        pageInfo
+        pageInfo,
+        loading,
+        hasMore
     };
 }
 export default connect(mapStateToProps)(LobbyComponent);

@@ -92,6 +92,7 @@ class RegisterForm extends Component {
 
 
 RegisterForm = createForm()(RegisterForm)
+
 class RegisterComponent extends Component {
     constructor(props) {
         super(props);

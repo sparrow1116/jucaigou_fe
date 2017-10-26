@@ -4,7 +4,7 @@
 import React from 'react';
 import { connect } from 'dva';
 // import styles from './Tab.css';
-import LobbyComponent from '../pages/lobby/components/lobby';
+import LobbyComponent from '../pages/lobby/list/components/lobby';
 
 function Home({ location }) {
     return (

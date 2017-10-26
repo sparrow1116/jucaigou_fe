@@ -49,11 +49,27 @@ function RouterConfig({ history,app}) {
                     path: 'lobby',
                     getComponent (nextState, cb) {
                         require.ensure([], require => {
-                            registerModel(app, require('./pages/lobby/model'));
+                            registerModel(app, require('./pages/lobby/list/model'));
                             cb(null, require('./routes/lobby'));
                         })
                     },
-                }
+                },{
+                    path: 'history',
+                    getComponent (nextState, cb) {
+                        require.ensure([], require => {
+                            registerModel(app, require('./pages/lobby/history/model'));
+                            cb(null, require('./routes/history'));
+                        })
+                    },
+                },{
+                    path: 'productDetail',
+                    getComponent (nextState, cb) {
+                        require.ensure([], require => {
+                            registerModel(app, require('./pages/lobby/list/model'));
+                            cb(null, require('./routes/productDetail'));
+                        })
+                    },
+                },
             ]
         }
     ];

@@ -1,0 +1,78 @@
+{
+  "status": 0,
+  "msg": null,
+  "data": {
+    "pageInfo": {
+      "pageSize": 8,
+      "pageIndex": 1,
+      "totalCount": 10
+    },
+    "historyArr": [
+      {
+        "id": 0,
+        "status": 0,
+        "productName": "试试看看",
+        "productId": "171023",
+        "endTime": 1508849398985,
+        "inputAmount": 3000,
+        "outputAmount": 6000
+      },{
+        "id": 1,
+        "status": 1,
+        "productName": "试试看看",
+        "productId": "171023",
+        "endTime": 1508849398985,
+        "inputAmount": 3000,
+        "outputAmount": 6000
+      },{
+        "id": 2,
+        "status": 2,
+        "productName": "试试看看",
+        "productId": "171023",
+        "endTime": 1508849398985,
+        "inputAmount": 3000,
+        "outputAmount": 6000
+      },{
+        "id": 3,
+        "status": 1,
+        "productName": "试试看看",
+        "productId": "171023",
+        "endTime": 1508849398985,
+        "inputAmount": 3000,
+        "outputAmount": 6000
+      },{
+        "id": 4,
+        "status": 2,
+        "productName": "试试看看",
+        "productId": "171023",
+        "endTime": 1508849398985,
+        "inputAmount": 3000,
+        "outputAmount": 6000
+      },{
+        "id": 5,
+        "status": 1,
+        "productName": "试试看看",
+        "productId": "171023",
+        "endTime": 1508849398985,
+        "inputAmount": 3000,
+        "outputAmount": 6000
+      },{
+        "id": 6,
+        "status": 2,
+        "productName": "试试看看",
+        "productId": "171023",
+        "endTime": 1508849398985,
+        "inputAmount": 3000,
+        "outputAmount": 6000
+      },{
+        "id": 7,
+        "status": 1,
+        "productName": "试试看看",
+        "productId": "171023",
+        "endTime": 1508849398985,
+        "inputAmount": 3000,
+        "outputAmount": 6000
+      }
+    ]
+  }
+}

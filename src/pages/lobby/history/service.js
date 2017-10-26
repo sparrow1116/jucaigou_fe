@@ -1,14 +1,14 @@
 /**
- * Created by zhangyj on 2017/10/18.
+ * Created by zhangyj on 2017/10/26.
  */
-import request from '../../utils/request';
+import request from '../../../utils/request';
 
-import * as Urls from '../../utils/urls'
+import * as Urls from '../../../utils/urls'
 
 
-export function getProductList({index,pageSize}) {
+export function getHistoryList({index,pageSize}) {
     //return  window.bridge.getContext().then(function (data) {
-    return request(Urls.getProductList, {
+    return request(Urls.getHistoryList, {
         method: 'POST',
         mode: "cors",
         headers: {

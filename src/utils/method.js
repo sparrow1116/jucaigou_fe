@@ -56,6 +56,7 @@ export const isAllDigital = function (str) {
     if (/^\d+$/.test(str)) return true; //纯数字
     return false;
 }
+//获取当前页面url中的参数
 export const getParamFromUrl = function () {
     var url = window.location.href;
     var paramObj = {}
@@ -70,6 +71,24 @@ export const getParamFromUrl = function () {
     return paramObj;
 }
 
+//资金显示成：￥10.00
+export const formatMoney = function(data){
+    if(!data){
+        return '￥0.00'
+    }
+    let selfStr = ''+data;
+    if(selfStr.indexOf('￥') < 0){
+        selfStr = '￥' + selfStr;
+    }
+    if(selfStr.indexOf('.') < 0){
+        selfStr = selfStr + '.00';
+    }
+    return selfStr;
+
+
+}
+
+//日期format
 export const Format = function (data, fmt) {
     var o = {
 	"M+": data.getMonth() + 1, //月份

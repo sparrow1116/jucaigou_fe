@@ -1,7 +1,7 @@
 /**
  * Created by zhangyj on 2017/10/18.
  */
-import * as method from '../../utils/method'
+import * as method from '../../../utils/method'
 import { routerRedux } from 'dva/router';
 import * as ProductService from './service';
 
@@ -15,14 +15,21 @@ export default {
             pageIndex:1,
             totalCount:9999999
         },
+        productInfo:{
+
+        },
         productArr:[
 
         ]
     },
     reducers: {
-	startLoad(state, {}){
-	    state.loading = true;
-	    return{...state}
+	    startLoad(state, {}){
+            state.loading = true;
+            return{...state}
+        },
+        refreshProductDetail(state,{payload:{data}}){
+            state.productInfo = data;
+            return {...state}
         },
 
         changeData(state, {payload:{data}  }) {
@@ -50,14 +57,23 @@ export default {
                     },
                 });
             }
+        },
+        *showProductDetail({payload:{id}},{call,select,put}){
+            const {data} = yield call(ProductService.getProductDetail, {id});
+            yield put({
+                type:'refreshProductDetail',
+                payload:{
+                    data
+                }
+            })
         }
     },
     subscriptions: {
         setup({ dispatch, history }) {
             return history.listen(({ pathname, query }) => {
                 console.log('>>>>>>>>>>>>');
-                if (pathname === '/register') {
-                    //window.history.pushState('/#/register')
+                if (pathname == '/home/productDetail') {
+                    dispatch({type: 'showProductDetail', payload: {id:query.id}});
                 }
             });
         },

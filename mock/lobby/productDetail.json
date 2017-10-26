@@ -1,0 +1,15 @@
+{
+  "status": 0,
+  "msg": null,
+  "data": {
+     "productName": "随便看看",
+     "productId": "171026",
+     "productScheme":"011让胜038让胜",
+     "startTime":1508849398985,
+     "endTime": 1508849398985,
+     "openTime": 1508849398985,
+     "oneAmount": 10,
+     "remainCount": 6000,
+     "currentStatus": "open"
+  }
+}

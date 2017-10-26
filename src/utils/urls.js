@@ -9,4 +9,8 @@ export const login = UsingDomain + '/api/jucaigou/login/login';
 
 export const register = UsingDomain + '/api/jucaigou/login/register';
 
-export const getProductList = UsingDomain + 'api/jucaigou/lobby/productList';
+export const getProductList = UsingDomain + '/api/jucaigou/lobby/productList';
+
+export const getHistoryList = UsingDomain + '/api/jucaigou/lobby/historyList';
+
+export const getProductDetail = UsingDomain + '/api/jucaigou/lobby/productDetail'
