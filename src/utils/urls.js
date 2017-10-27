@@ -13,4 +13,8 @@ export const getProductList = UsingDomain + '/api/jucaigou/lobby/productList';
 
 export const getHistoryList = UsingDomain + '/api/jucaigou/lobby/historyList';
 
-export const getProductDetail = UsingDomain + '/api/jucaigou/lobby/productDetail'
+export const getProductDetail = UsingDomain + '/api/jucaigou/lobby/productDetail';
+
+export const buyProduct = UsingDomain + '/api/jucaigou/lobby/buyProduct';
+
+export const getAttionMsg = UsingDomain + '/api/jucaigou/lobby/getAttionMsg';

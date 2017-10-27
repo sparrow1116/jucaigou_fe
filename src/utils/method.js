@@ -85,8 +85,14 @@ export const formatMoney = function(data){
     }
     return selfStr;
 
-
 }
+
+//正数校验
+export const isRegData = function(data){
+    var reg = /^[1-9]\d*$/;
+    return reg.test(data)
+};
+
 
 //日期format
 export const Format = function (data, fmt) {

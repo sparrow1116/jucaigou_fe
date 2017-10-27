@@ -82,6 +82,21 @@
     float: right;
     font-size:60px !important;
     color:red;
-    top:0;
+    top:15px;
     right:40px;
+}
+.attionMsg{
+    font-size:30px;
+    color:red;
+    padding:10px 40px;
+    line-height: 40px;
+}
+.riskCalculate{
+    background: #00CC00;
+    width:90%;
+    height:80px;
+    line-height: 80px;
+    margin-left: 5%;
+    border-radius: 10px;
+    color:#fff;
 }

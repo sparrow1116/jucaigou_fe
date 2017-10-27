@@ -69,6 +69,22 @@ function RouterConfig({ history,app}) {
                             cb(null, require('./routes/productDetail'));
                         })
                     },
+                },{
+                    path: 'protocol',
+                    getComponent (nextState, cb) {
+                        require.ensure([], require => {
+                            //registerModel(app, require('./pages/lobby/list/model'));
+                            cb(null, require('./routes/protocol'));
+                        })
+                    },
+                },{
+                    path: 'riskCalculate',
+                    getComponent (nextState, cb) {
+                        require.ensure([], require => {
+                            //registerModel(app, require('./pages/lobby/list/model'));
+                            cb(null, require('./routes/calculate'));
+                        })
+                    },
                 },
             ]
         }

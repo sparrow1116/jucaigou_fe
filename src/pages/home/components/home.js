@@ -14,6 +14,12 @@ class HomeComponent extends Component {
     constructor(props) {
         super(props);
     }
+    shouldComponentUpdate(nextProps, nextState){
+        if(this.props.toggeleError != nextProps.toggeleError){
+            Toast.info(nextProps.errorMessage);
+        }
+        return nextProps;
+    }
     render(){
         return (
             <div>
@@ -24,9 +30,9 @@ class HomeComponent extends Component {
 }
 
 function mapStateToProps(state) {
-    const {errorMessage} = state.home;
+    const {errorMessage,toggeleError} = state.home;
     return {
-        errorMessage
+        errorMessage,toggeleError
     };
 }
 export default connect(mapStateToProps)(HomeComponent);

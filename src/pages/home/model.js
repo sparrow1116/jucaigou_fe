@@ -7,11 +7,25 @@ import { routerRedux } from 'dva/router';
 export default {
     namespace: 'home',
     state: {
-        errorMessage:''
+        errorMessage: '',
+        toggeleError:false,
     },
     reducers: {
+        showErrorData(state, {payload:{msg}}){
+            state.errorMessage = msg;
+            state.toggeleError = !state.toggeleError;
+            return {...state};
+        }
     },
     effects: {
+        *showError({payload:{msg}},{call,select,put}){
+            yield put({
+                type:'showErrorData',
+                payload:{
+                    msg
+                }
+            })
+        }
     },
     subscriptions: {
         setup({ dispatch, history }) {

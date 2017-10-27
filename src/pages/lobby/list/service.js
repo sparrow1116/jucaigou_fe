@@ -7,7 +7,6 @@ import * as Urls from '../../../utils/urls'
 
 
 export function getProductList({index,pageSize}) {
-
     return request(Urls.getProductList, {
         method: 'POST',
         mode: "cors",
@@ -20,8 +19,25 @@ export function getProductList({index,pageSize}) {
             pageSize
         })
     });
-
 }
+
+export function buyProduct({id,currentProductId,userId,count}) {
+    return request(Urls.buyProduct, {
+        method: 'POST',
+        mode: "cors",
+        headers: {
+            'Content-Type': 'application/json',
+            'Accept': 'application/json'
+        },
+        body: JSON.stringify({
+            id,
+            currentProductId,
+            userId,
+            count
+        })
+    });
+}
+
 
 export function getProductDetail({id}) {
 
@@ -35,4 +51,16 @@ export function getProductDetail({id}) {
         body: {id}
     });
 
+}
+
+export function getAttionMsg(){
+    return request(Urls.getAttionMsg, {
+        method: 'GET',
+        mode: "cors",
+        headers: {
+            'Content-Type': 'application/json',
+            'Accept': 'application/json'
+        },
+        body: {}
+    });
 }

@@ -162,7 +162,7 @@ export default {
             }
             const result = yield call(LoginService.login, {phone,msgCode});
             if(result.status == 0){
-                //window.location.href = '/#/homepage'
+                window.localStorage.setItem('jucaigou_user_info',JSON.stringify(result.data));
                 yield put(routerRedux.push('/home/lobby'));
             }else{
                 yield  put({
