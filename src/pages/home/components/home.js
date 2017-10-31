@@ -24,7 +24,7 @@ class HomeComponent extends Component {
         return (
             <div>
                 {this.props.children}
-            <SelfTabBar />
+            <SelfTabBar dispatch={this.props.dispatch}/>
         </div>)
     }
 }

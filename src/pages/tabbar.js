@@ -4,10 +4,17 @@
 import React, { Component } from 'react'
 import { Toast, TabBar, Icon } from 'antd-mobile';
 
+import { hashHistory,routerRedux } from 'dva/router';
+
+import styles from './tabbar.css'
+
 
 export default class SelfTabBar extends Component {
     constructor(props) {
         super(props);
+        this.state = {
+            selectedTab: '001'
+        };
     }
 
     render(){
@@ -16,76 +23,68 @@ export default class SelfTabBar extends Component {
                 {this.props.children}
                 <TabBar
                     unselectedTintColor="#949494"
-                    tintColor="#33A3F4"
+                    tintColor="red"
                     barTintColor="white"
                 >
                     <TabBar.Item
                         title="聚购大厅"
                         key="聚购大厅"
-                        icon={<div style={{
-                        width: '0.44rem',
-                        height: '0.44rem',
-                        background: 'url(https://zos.alipayobjects.com/rmsportal/sifuoDUQdAFKAVcFGROC.svg) center center /  0.42rem 0.42rem no-repeat' }}
-                      />
+                        icon={
+                            <i  className={styles.selfIcon + ' ' + 'iconfont icon-home' }></i>
+                        }
+                        selectedIcon={<i  className={styles.selfIcon + ' ' + 'iconfont icon-home' }></i>
                     }
-                        selectedIcon={<div style={{
-                        width: '0.44rem',
-                        height: '0.44rem',
-                        background: 'url(https://zos.alipayobjects.com/rmsportal/iSrlOTqrKddqbOmlvUfq.svg) center center /  0.42rem 0.42rem no-repeat' }}
-                      />
-                    }
+                        selected={this.state.selectedTab === '001'}
                         badge={1}
                         onPress={() => {
-                        console.log('>>>>11');
-                    }}
+                            this.setState({selectedTab:'001'});
+                            this.props.dispatch(routerRedux.push({pathname: '/home/lobby'}));
+                        }}
                         data-seed="logId"
                     >
                     </TabBar.Item>
                     <TabBar.Item
-                        icon={<Icon type="koubei-o" size="md" />}
-                        selectedIcon={<Icon type="koubei" size="md" />}
-                        title="口碑"
+                        icon={<i  className={styles.selfIcon + ' ' + 'iconfont icon-remind' }></i>}
+                        selectedIcon={<i  className={styles.selfIcon + ' ' + 'iconfont icon-remind' }></i>}
+                        title="系统公告"
                         key="口碑"
                         badge={'new'}
-
+                        selected={this.state.selectedTab === '002'}
                         onPress={() => {
-                        console.log('>>>>>22');
-                    }}
+                            this.setState({selectedTab:'002'})
+                            this.props.dispatch(routerRedux.push({pathname: '/home/announcement'}));
+                        }}
                         data-seed="logId1"
                     >
                     </TabBar.Item>
                     <TabBar.Item
                         icon={
-                        <div style={{
-                          width: '0.44rem',
-                          height: '0.44rem',
-                          background: 'url(https://zos.alipayobjects.com/rmsportal/psUFoAMjkCcjqtUCNPxB.svg) center center /  0.42rem 0.42rem no-repeat' }}
-                        />
-                    }
+                            <i  className={styles.selfIcon + ' ' + 'iconfont icon-comments' }></i>
+                        }
                         selectedIcon={
-                            <div style={{
-                              width: '0.44rem',
-                              height: '0.44rem',
-                              background: 'url(https://zos.alipayobjects.com/rmsportal/IIRLrXXrFAhXVdhMWgUI.svg) center center /  0.42rem 0.42rem no-repeat' }}
-                            />
+                            <i  className={styles.selfIcon + ' ' + 'iconfont icon-comments' }></i>
                          }
-                        title="朋友"
+                        selected={this.state.selectedTab === '003'}
+                        title="消息通知"
                         key="朋友"
                         dot
                         onPress={() => {
-                        console.log('>>>>>33');
-                    }}
+                            this.setState({selectedTab:'003'})
+                            this.props.dispatch(routerRedux.push({pathname: '/home/message'}));
+                        }}
                     >
 
                     </TabBar.Item>
                     <TabBar.Item
-                        icon={{ uri: 'https://zos.alipayobjects.com/rmsportal/asJMfBrNqpMMlVpeInPQ.svg' }}
-                        selectedIcon={{ uri: 'https://zos.alipayobjects.com/rmsportal/gjpzzcrPMkhfEqgbYvmN.svg' }}
+                        icon={<i  className={styles.selfIcon + ' ' + 'iconfont icon-account' }></i>}
+                        selectedIcon={<i  className={styles.selfIcon + ' ' + 'iconfont icon-account' }></i>}
                         title="我的"
                         key="我的"
+                        selected={this.state.selectedTab === '004'}
                         onPress={() => {
-                        console.log('>>>>>44');
-                    }}
+                            this.setState({selectedTab:'004'})
+                            this.props.dispatch(routerRedux.push({pathname: '/home/user'}));
+                        }}
                     >
                     </TabBar.Item>
                 </TabBar>

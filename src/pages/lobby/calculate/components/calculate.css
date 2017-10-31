@@ -1,0 +1,39 @@
+.content{
+    padding-top:130px;
+}
+.headLine{
+    background:#fefefe;
+    height:100px;
+}
+.headLine span{
+    font-size:30px;
+    color:#969696;
+    padding:5px 50px;
+    margin-top:25px;
+    display: inline-block;
+}
+
+.riskCalculate{
+    background: #00CC00;
+    width:90%;
+    height:80px;
+    line-height: 80px;
+    margin-left: 5%;
+    border-radius: 10px;
+    color:#fff;
+}
+.myTable{
+    width: 100%;
+    padding: 30px 0;
+}
+.myTable tr{
+    width:100%;
+}
+.myTable tr th{
+    font-weight: 100;
+    border: 1px solid gainsboro;
+}
+.myTable tr td{
+    text-align: center;
+    border: 1px solid gainsboro;
+}

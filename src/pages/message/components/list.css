@@ -1,0 +1,23 @@
+.line{
+    padding: 40px 20px;
+    border: 1px solid gainsboro;
+}
+.line .date{
+
+}
+.line .title{
+
+}
+.line .arrow{
+    float: right;
+    position: absolute;
+    right: 110px;
+    margin-right:45px;
+}
+.line .point{
+    float:right;
+    width:10px;
+    height:10px;
+    border-radius: 10px;
+    background:red;
+}

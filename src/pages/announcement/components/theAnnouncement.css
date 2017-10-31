@@ -1,0 +1,15 @@
+.content{
+    padding-top:130px;
+}
+.announceContent{
+    background:#fff;
+
+}
+.announceContent div:nth-child(1){
+    padding:40px 20px;
+    font-size: 36px;
+}
+.announceContent div:nth-child(2){
+    padding:20px 20px;
+    font-size: 28px;
+}

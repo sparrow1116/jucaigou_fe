@@ -85,7 +85,32 @@ function RouterConfig({ history,app}) {
                             cb(null, require('./routes/calculate'));
                         })
                     },
+                },{
+                    path: 'announcement',
+                    getComponent (nextState, cb) {
+                        require.ensure([], require => {
+                            registerModel(app, require('./pages/announcement/model'));
+                            cb(null, require('./routes/announcement'));
+                        })
+                    },
+                },{
+                    path: 'theAnnouncement',
+                    getComponent (nextState, cb) {
+                        require.ensure([], require => {
+                            registerModel(app, require('./pages/announcement/model'));
+                            cb(null, require('./routes/theAnnouncement'));
+                        })
+                    },
+                },{
+                    path: 'message',
+                    getComponent (nextState, cb) {
+                        require.ensure([], require => {
+                            registerModel(app, require('./pages/message/model'));
+                            cb(null, require('./routes/message'));
+                        })
+                    },
                 },
+
             ]
         }
     ];
