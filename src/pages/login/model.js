@@ -2,6 +2,7 @@
  * Created by zyj on 2017/9/5.
  */
 import * as method from '../../utils/method'
+import * as Const from '../../utils/constData'
 import * as LoginService from './service';
 import { routerRedux } from 'dva/router';
 
@@ -162,7 +163,7 @@ export default {
             }
             const result = yield call(LoginService.login, {phone,msgCode});
             if(result.status == 0){
-                window.localStorage.setItem('jucaigou_user_info',JSON.stringify(result.data));
+                window.localStorage.setItem(Const.STORE_USER_INFO,JSON.stringify(result.data));
                 yield put(routerRedux.push('/home/lobby'));
             }else{
                 yield  put({

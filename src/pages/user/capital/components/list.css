@@ -1,0 +1,27 @@
+.win{
+    color:red;
+}
+
+.line{
+    padding: 20px 40px;
+    background:#fff;
+    border-bottom: 1px solid gainsboro;
+}
+.line .rightBlock{
+    float: right;
+}
+
+.line .product{
+
+}
+.line .icon{
+    font-size:48px !important;
+    color:green;
+}
+.line .name{
+    margin-left: 20px;
+}
+.line .arrow{
+    font-size:30px;
+    margin-left: 10px;
+}

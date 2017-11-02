@@ -1,0 +1,27 @@
+.content{
+    padding-top:130px;
+}
+.headLine{
+    padding: 40px 30px;
+    border-bottom: 1px solid gainsboro;
+}
+.headLine .value{
+    color:#333;
+}
+.line{
+    padding: 20px 30px;
+    color:#969696;
+    background: #fff;
+}
+.line .key{
+    width: 25%;
+    float:left;
+}
+.line .value{
+    text-align: right;
+    width: 75%;
+    margin-left: 25%;
+}
+.red{
+    color:red;
+}

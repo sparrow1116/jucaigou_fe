@@ -10,24 +10,15 @@
     top:0;
     left: 0;
     z-index: 999;
-      border-bottom: 1px solid #E1E1E1;
+    border-bottom: 1px solid #E1E1E1;
      padding-top: 40px;
 }
-.title span:nth-child(2){
-    display: inline-block;
-    width: 50%;
-    text-overflow: ellipsis;
-    white-space: nowrap;
-    overflow: hidden;
-}
-
-.right{
+.leftBtn{
+    z-index: 9999;
+    color: #fff;
     position: absolute;
-    right: 30px;
-     height: 90px;
-    line-height:90px;
-    opacity: 0.8;
-    font-size: 28px;
-    color: #666666;
-
+    top: 70px;
+    left: 40px;
 }
+
+

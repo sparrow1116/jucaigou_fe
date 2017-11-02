@@ -25,8 +25,11 @@ export default {
             return{...state}
         },
 
-        setTheAnnouncement(state,{payload:{data}}){
-            state.selectAnnouncement = data;
+        setTheMessage(state,{payload:{data,index}}){
+            state.selectMessage = data;
+            if(index){
+                state.list[index].readed = true;
+            }
             return{...state}
         },
 
@@ -58,18 +61,20 @@ export default {
             }
 
         },
-        *selectAnnouncement({payload:{id}},{call,select,put}){
-            let list = yield select((state)=>{return state.Announcement.list});
-            let theData = null;
+        *selectMessage({payload:{id}},{call,select,put}){
+            let list = yield select((state)=>{return state.message.list});
+            let theData = null,theIndex = null;
             for(var i = 0; i<list.length; i++){
                 if(list[i].id == id){
                     theData = list[i];
+                    theIndex = i;
                 }
             }
             yield put({
-                type: 'setTheAnnouncement',
+                type: 'setTheMessage',
                 payload: {
-                    data:theData
+                    data:theData,
+                    index: theIndex
                 },
             });
         }
@@ -78,8 +83,8 @@ export default {
     subscriptions: {
         setup({ dispatch, history }) {
             return history.listen(({ pathname, query }) => {
-                if (pathname == '/home/theAnnouncement') {
-                    dispatch({type: 'selectAnnouncement', payload: {id:query.id}});
+                if (pathname == '/home/theMessage') {
+                    dispatch({type: 'selectMessage', payload: {id:query.id}});
                 }
             });
         },

@@ -1,0 +1,22 @@
+.content{
+    padding-top:130px;
+    background: #fff;
+    padding: 130px 20px 0 20px;
+}
+.content .title{
+    padding:40px 20px;
+    font-size: 36px;
+}
+.content .subTitle{
+    padding:20px 20px;
+    font-size: 28px;
+}
+.content .messageContent{
+    padding:20px 20px;
+    font-size: 28px;
+    line-height: 40px;
+}
+
+.self_span{
+    margin: 0 20px;
+}

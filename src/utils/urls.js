@@ -22,3 +22,15 @@ export const getAttionMsg = UsingDomain + '/api/jucaigou/lobby/getAttionMsg';
 export const getAnnoucementList = UsingDomain + '/api/jucaigou/annoucement/getAnnoucementList';
 
 export const getMessageList = UsingDomain + '/api/jucaigou/message/getMessageList';
+
+export const getBaseBankInfo = UsingDomain + '/api/jucaigou/user/getBaseBankInfo';
+
+export const getOrderList = UsingDomain + '/api/jucaigou/user/getOrderList';
+
+export const getOrderDetail = UsingDomain + '/api/jucaigou/user/getOrderDetail';
+
+export const getCapitalList = UsingDomain + '/api/jucaigou/user/getCapitalList';
+
+export const getCapitalDetail = UsingDomain + '/api/jucaigou/user/getCapitalDetail';
+
+export const getCapitalSummay = UsingDomain + '/api/jucaigou/user/getCapitalSummay';

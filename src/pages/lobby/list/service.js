@@ -2,7 +2,6 @@
  * Created by zhangyj on 2017/10/18.
  */
 import request from '../../../utils/request';
-
 import * as Urls from '../../../utils/urls'
 
 

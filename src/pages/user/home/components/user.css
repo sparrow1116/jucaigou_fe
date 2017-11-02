@@ -1,0 +1,57 @@
+.content{
+    padding-top:130px;
+}
+.head{
+    color:#969696;
+    padding:30px 30px 10px 30px;
+}
+.head .name{
+    font-size: 48px;
+    padding-bottom: 10px;
+}
+.head .subTitle{
+    padding-bottom: 30px;
+    font-size: 26px;
+}
+.attations{
+    font-size: 26px;
+    line-height: 40px;
+}
+.line{
+    background: #fff;
+    border-top:1px solid gainsboro;
+    border-bottom:1px solid gainsboro;
+    padding: 30px 30px;
+}
+.line .key{
+    width: 30%;
+    float: left;
+}
+.line .value{
+    width: 70%;
+    margin-left: 30%;
+    text-align: right;
+}
+.actionLine{
+    background: #fff;
+    height: 90px;
+    line-height: 90px;
+    color:#009966
+}
+.actionLine .left{
+    width:50%;
+    float:left;
+    text-align: center;
+    border-right: 1px solid gainsboro;
+}
+.actionLine .right{
+    width:50%;
+    margin-left: 50%;
+    text-align: center;
+}
+.subPageAction{
+    margin-top:50px;
+}
+.item{
+    border-bottom: 1px solid gainsboro;
+}

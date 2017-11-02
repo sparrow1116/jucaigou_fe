@@ -51,6 +51,13 @@ export const formatNum = function (strNum) {
 
     return interNum;
 }
+
+//是否包含汉子
+export const isContainChinese = function(str){
+    if(/^[\u4e00-\u9fa5]/.test(str)) return true //包含汉字
+    return false;
+}
+
 //是否是纯数字
 export const isAllDigital = function (str) {
     if (/^\d+$/.test(str)) return true; //纯数字

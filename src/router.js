@@ -1,7 +1,6 @@
 import React, { PropTypes } from 'react';
 import { Router, Route, IndexRoute, Link } from 'dva/router';
 
-import TT001 from './pages/tt001'
 import SelfTabBar from './pages/tabbar'
 
 // import IndexPage from './routes/IndexPage';
@@ -107,6 +106,54 @@ function RouterConfig({ history,app}) {
                         require.ensure([], require => {
                             registerModel(app, require('./pages/message/model'));
                             cb(null, require('./routes/message'));
+                        })
+                    },
+                },{
+                    path: 'theMessage',
+                    getComponent (nextState, cb) {
+                        require.ensure([], require => {
+                            registerModel(app, require('./pages/message/model'));
+                            cb(null, require('./routes/theMessage'));
+                        })
+                    },
+                },{
+                    path: 'user',
+                    getComponent (nextState, cb) {
+                        require.ensure([], require => {
+                            registerModel(app, require('./pages/user/home/model'));
+                            cb(null, require('./routes/user'));
+                        })
+                    },
+                },{
+                    path: 'orderList',
+                    getComponent (nextState, cb) {
+                        require.ensure([], require => {
+                            registerModel(app, require('./pages/user/order/model'));
+                            cb(null, require('./routes/orderList'));
+                        })
+                    },
+                },{
+                    path: 'orderDetail',
+                    getComponent (nextState, cb) {
+                        require.ensure([], require => {
+                            registerModel(app, require('./pages/user/order/model'));
+                            cb(null, require('./routes/orderDetail'));
+                        })
+                    },
+                },{
+                    path: 'capitalList',
+                    getComponent (nextState, cb) {
+                        require.ensure([], require => {
+                            registerModel(app, require('./pages/user/capital/model'));
+                            cb(null, require('./routes/capitalList'));
+                        })
+                    },
+                },{
+                    path: 'capitalDetail',
+                    getComponent (nextState, cb) {
+                        require.ensure([], require => {
+                            registerModel(app, require('./pages/user/capital/model'));
+                            cb(null, require('./routes/capitalDetail'));
                         })
                     },
                 },

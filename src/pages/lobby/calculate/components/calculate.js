@@ -34,7 +34,7 @@ export default class CalculateComponent extends Component {
                 theData[i][2] = theData[i][1];
             }else{
                 theData[i][1] = method.accMul(theData[i -1][1],this.state.multiple);
-                theData[i][2] = theData[i-1][2] + theData[i][1];
+                theData[i][2] = Number(theData[i-1][2]) + Number(theData[i][1]);
             }
             theData[i][3] = method.accMul(theData[i][1],this.state.ratio);
             theData[i][4] = theData[i][3] - theData[i][2];

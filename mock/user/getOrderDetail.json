@@ -1,0 +1,20 @@
+{
+  "status": 0,
+  "msg": null,
+  "data": {
+    "id":431243,
+    "numbering": "B94321-4032",
+    "productName": "低赔单串",
+    "productId": "171022",
+    "productScheme": "05胜014胜",
+    "sellOpenTime": 1508849398985,
+    "sellCloseTime": 1508849398985,
+    "lotteryTime": 1508849398985,
+    "orderTime":1508849398985,
+    "singlePrice": 10,
+    "buyNumbers": 3,
+    "orderPrice": 30,
+    "payType":"账户余额",
+    "orderStatus": "200"
+  }
+}

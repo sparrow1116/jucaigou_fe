@@ -1,0 +1,20 @@
+.content{
+    padding-top:130px;
+}
+.summary{
+    margin: 50px 0;
+    background: #fff;
+}
+.line{
+    padding:20px 30px;
+    color:#969696;
+}
+.line .key{
+    width: 35%;
+    float:left;
+}
+.line .value{
+    text-align: right;
+    width: 65%;
+    margin-left: 35%;
+}

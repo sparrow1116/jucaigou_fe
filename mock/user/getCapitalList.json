@@ -1,0 +1,21 @@
+{
+  "status": 0,
+  "msg": null,
+  "data": {
+    "pageInfo": {
+      "pageSize": 8,
+      "pageIndex": 1,
+      "totalCount": 999
+    },
+    "list":[
+      {
+        "id":432134,
+        "title":"购彩",
+        "price":10,
+        "date":1508849398985
+      }
+    ]
+  }
+
+
+}

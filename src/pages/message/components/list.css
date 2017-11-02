@@ -11,8 +11,8 @@
 .line .arrow{
     float: right;
     position: absolute;
-    right: 110px;
-    margin-right:45px;
+    right: 60px;
+    font-size: 50px;
 }
 .line .point{
     float:right;
@@ -20,4 +20,5 @@
     height:10px;
     border-radius: 10px;
     background:red;
+    margin-right: 35px;
 }

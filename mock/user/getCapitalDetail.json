@@ -1,0 +1,13 @@
+{
+  "status": 0,
+  "msg": null,
+  "data": {
+    "id":431243,
+    "numbering": "B94321-4032",
+    "transactType": "购彩",
+    "transactPrice": 10,
+    "transactStatus": "已完成",
+    "createTime":1508849398985,
+    "endTime":1508849398985
+  }
+}

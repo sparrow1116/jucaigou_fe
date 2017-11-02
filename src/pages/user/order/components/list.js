@@ -1,5 +1,5 @@
 /**
- * Created by zhangyj on 2017/10/31.
+ * Created by zhangyj on 2017/11/2.
  */
 import React, { Component } from 'react';
 import ReactDOM from 'react-dom';
@@ -8,11 +8,9 @@ import classnames from 'classnames';
 import { routerRedux } from 'dva/router';
 
 import styles from './list.css'
-import * as method from '../../../utils/method'
-import productPic from '../../../assets/2letter.png'
+import * as method from '../../../../utils/method'
 
-
-export default class MessageList extends React.Component {
+export default class OrderList extends React.Component {
     constructor(props) {
         super(props);
 
@@ -26,30 +24,18 @@ export default class MessageList extends React.Component {
         };
     }
 
-    fetchData(){
+    fetchData() {
         this.props.dispatch({
-            type: 'message/getMessage'
+            type: 'order/getOrderList'
         });
     }
-    showDetail(id){
-        this.props.dispatch(routerRedux.push({
-            pathname: '/home/theMessage',
-            query: { id }
-        }));
-    }
-
     componentDidMount() {
-
         const hei = document.documentElement.clientHeight - ReactDOM.findDOMNode(this.lv).parentNode.offsetTop;
-        // simulate initial Ajax
         this.fetchData();
         this.setState({
             height:hei
         })
-
     }
-
-    // If you use redux, the data maybe at props, you need use `componentWillReceiveProps`
     componentWillReceiveProps(nextProps) {
         if (nextProps.list !== this.props.list) {
             this.setState({
@@ -57,24 +43,33 @@ export default class MessageList extends React.Component {
             });
         }
     }
-
     onEndReached = (event) => {
         if(this.props.loading || !this.props.hasMore){
             return;
         }
         this.fetchData();
     }
-
-    render() {
-
+    showDetail(id){
+        this.props.dispatch(routerRedux.push({
+            pathname: '/home/orderDetail',
+            query: { id }
+        }));
+    }
+    render(){
         const row = (SelfData) => {
-
+            let iconClass = SelfData.status == 'done'? 'icon-anquanbaozhang': 'icon-time_fill';
+            iconClass += ' iconfont ';
+                let winClass  = SelfData.isWin ? styles.win : styles.lost;
             return (
-                <div key={SelfData.id} className={styles.line} onClick={this.showDetail.bind(this,SelfData.id)}>
-                    <span className={styles.date}>[{method.Format(new Date(SelfData.date),'MM-dd')}]</span>
-                    <span className={styles.title}>{SelfData.title}</span>
-                    <span className={styles.arrow + ' iconfont icon-more'}></span>
-                    <span style={{display:SelfData.readed ? 'none' : 'block'}} className={styles.point}></span>
+                <div key={SelfData.id} className={styles.line } onClick={this.showDetail.bind(this,SelfData.id)}>
+                    <span className={iconClass + styles.icon}></span>
+                    <span className={styles.name +' '+ winClass}>{SelfData.productName}</span>
+                    <span className={styles.product +' '+ winClass}>[{SelfData.productId}]</span>
+                    <span className={styles.rightBlock}>
+                        <span>{method.formatMoney(SelfData.price)}</span>
+                        <span className={styles.arrow + ' iconfont icon-more'}></span>
+                    </span>
+
                 </div>
             );
         };

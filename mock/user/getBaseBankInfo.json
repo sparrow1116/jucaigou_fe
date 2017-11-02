@@ -1,0 +1,9 @@
+{
+  "status": 0,
+  "msg": null,
+  "data": {
+      "name":"张英杰",
+      "bankCard": 89403124321,
+      "balance": 13432
+  }
+}
