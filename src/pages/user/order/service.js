@@ -13,7 +13,7 @@ export function getOrderList({userId}) {
             'Content-Type': 'application/json',
             'Accept': 'application/json'
         },
-        body: {userId}
+        body: JSON.stringify({userId})
     });
 
 }
@@ -27,7 +27,7 @@ export function getOrderDetail({id}) {
             'Content-Type': 'application/json',
             'Accept': 'application/json'
         },
-        body: {id}
+        body: JSON.stringify({id})
     });
 
 }

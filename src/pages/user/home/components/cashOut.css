@@ -1,0 +1,55 @@
+.content{
+    padding: 130px 0px 0 0px;
+}
+.name{
+    font-size:50px;
+    color:#808080;
+    padding-top:30px;
+    padding-left:30px;
+    padding-right:30px;
+}
+.mobile{
+    color:#969696;
+    font-size:24px;
+    padding-top:10px;
+    padding-left:30px;
+    padding-right:30px;
+}
+.attation{
+    color:#969696;
+    font-size:24px;
+    padding-top: 30px;
+    padding-left:30px;
+    padding-right:30px;
+    padding-bottom: 30px;
+}
+.line{
+    padding:20px 30px;
+    background:#fff;
+    border-bottom: 1px solid gainsboro;
+}
+.line .key{
+    color:#969696;
+    font-size:32px;
+    width:25%;
+    float:left;
+}
+.line .value{
+    width:75%;
+    margin-left:25%;
+    text-align: right;
+}
+.line .value input{
+    border:0;
+    text-align: right;
+}
+.okBtn{
+    background: #00CC00;
+    width:90%;
+    height:80px;
+    line-height: 80px;
+    margin-left: 5%;
+    border-radius: 10px;
+    color:#fff;
+    margin-top:50px;
+}

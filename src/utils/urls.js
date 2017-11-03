@@ -34,3 +34,7 @@ export const getCapitalList = UsingDomain + '/api/jucaigou/user/getCapitalList';
 export const getCapitalDetail = UsingDomain + '/api/jucaigou/user/getCapitalDetail';
 
 export const getCapitalSummay = UsingDomain + '/api/jucaigou/user/getCapitalSummay';
+
+export const deleteCard = UsingDomain + '/api/jucaigou/user/deleteCard';
+
+export const cashOut = UsingDomain + '/api/jucaigou/user/cashOut'

@@ -156,7 +156,16 @@ function RouterConfig({ history,app}) {
                             cb(null, require('./routes/capitalDetail'));
                         })
                     },
+                },{
+                    path: 'cashOut',
+                    getComponent (nextState, cb) {
+                        require.ensure([], require => {
+                            registerModel(app, require('./pages/user/home/model'));
+                            cb(null, require('./routes/cashOut'));
+                        })
+                    },
                 },
+
 
             ]
         }

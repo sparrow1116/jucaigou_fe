@@ -35,6 +35,19 @@ class UserComponent extends Component {
             }}
         ])
     }
+    deleteCard(){
+        alert('删除银行卡','您确认删除银行卡，重新绑定新卡？',[
+            {text:'取消',onPress:()=>{}},
+            {text:'确认',onPress:()=>{
+                this.props.dispatch({
+                    type:'user/deleteCard'
+                })
+            }}
+        ])
+    }
+    bindNewCard(){
+        console.log('bind new card I will do it later');
+    }
     render(){
         return(
             <div>
@@ -47,7 +60,12 @@ class UserComponent extends Component {
                     </div>
                     <div className={styles.line}>
                         <div className={styles.key}>银 行 卡</div>
-                        <div className={styles.value}>{this.props.fundsInfo.bankCard}</div>
+                        <div style={{display:this.props.fundsInfo.bankCard ? 'block' : 'none' }}
+                             onClick={this.deleteCard.bind(this)}
+                             className={styles.value + ' ' + styles.bankCard}>{this.props.fundsInfo.bankCard}</div>
+                        <div style={{display:this.props.fundsInfo.bankCard ? 'none' : 'block' }}
+                             onClick={this.bindNewCard.bind(this)}
+                             className={styles.value + ' ' + styles.bankCard}>绑定银行卡</div>
                     </div>
                     <div className={styles.line}>
                         <div className={styles.key}>可用余额</div>
@@ -55,7 +73,15 @@ class UserComponent extends Component {
                     </div>
                     <div className={styles.actionLine}>
                         <div className={styles.left}>充值</div>
-                        <div className={styles.right}>提现</div>
+                        <div className={styles.right}
+                            onClick={
+                                ()=>{
+                                    this.props.dispatch(routerRedux.push({
+                                        pathname: '/home/cashOut'
+                                    }))
+                                }
+                            }
+                        >提现</div>
                     </div>
 
                     <List className={styles.subPageAction}>

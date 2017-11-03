@@ -13,7 +13,7 @@ export function getCapitalList({userId,pageSize,pageIndex}) {
             'Content-Type': 'application/json',
             'Accept': 'application/json'
         },
-        body: {userId,pageSize,pageIndex}
+        body: JSON.stringify({userId,pageSize,pageIndex})
     });
 
 }
@@ -27,7 +27,7 @@ export function getCapitalDetail({id}) {
             'Content-Type': 'application/json',
             'Accept': 'application/json'
         },
-        body: {id}
+        body: JSON.stringify({id})
     });
 }
 export function getCapitalSummay(id){
@@ -38,6 +38,6 @@ export function getCapitalSummay(id){
             'Content-Type': 'application/json',
             'Accept': 'application/json'
         },
-        body: {id}
+        body: JSON.stringify({id})
     });
 }

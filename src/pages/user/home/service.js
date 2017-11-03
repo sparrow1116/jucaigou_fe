@@ -17,3 +17,27 @@ export function getBaseBankInfo({userId}) {
     });
 
 }
+
+export function deleteCard({userId}){
+    return request(Urls.deleteCard, {
+        method: 'POST',
+        mode: "cors",
+        headers: {
+            'Content-Type': 'application/json',
+            'Accept': 'application/json'
+        },
+        body: JSON.stringify({userId})
+    });
+}
+
+export function cashOut({userId,price}){
+    return request(Urls.cashOut, {
+        method: 'POST',
+        mode: "cors",
+        headers: {
+            'Content-Type': 'application/json',
+            'Accept': 'application/json'
+        },
+        body: JSON.stringify({userId,price})
+    });
+}
