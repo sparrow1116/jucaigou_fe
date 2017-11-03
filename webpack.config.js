@@ -14,6 +14,15 @@ module.exports = function(webpackConfig, env) {
         copyUnmodified: true
     }));
 
+    webpackConfig.plugins.push(new CopyWebpackPlugin([{
+        from:  './mock',
+        to:'./mock'
+    }], {
+        ignore: [],
+        copyUnmodified: true
+    }));
+
+
     webpackConfig.babel.plugins.push('transform-runtime');
 
     // Support hmr
